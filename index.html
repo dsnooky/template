@@ -3,64 +3,83 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Virtual Assistant | Grow Your Business</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Virtual Assistant | Smart Business Support</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
+:root{
+  --primary:#6c63ff;
+  --secondary:#48c6ef;
+  --dark:#222;
+  --light:#f5f7fb;
+}
+
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:'Poppins', sans-serif;
+  font-family:'Poppins',sans-serif;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
-  background:#f5f7fb;
-  color:#333;
+  background:var(--light);
+  color:var(--dark);
 }
 
-/* HERO */
+/* ================= HERO ================= */
 .hero{
   min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:40px 20px;
-  background:linear-gradient(135deg,#6c63ff,#48c6ef);
-  color:#fff;
   text-align:center;
+  padding:40px 20px;
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  color:#fff;
+  overflow:hidden;
+}
+
+.hero-content{
+  animation:fadeUp 1.2s ease forwards;
 }
 
 .hero h1{
-  font-size:2.8rem;
+  font-size:3rem;
   margin-bottom:15px;
 }
 
 .hero p{
-  max-width:600px;
+  max-width:650px;
   margin:auto;
-  font-size:1.1rem;
-  margin-bottom:25px;
+  font-size:1.15rem;
+  margin-bottom:30px;
 }
 
 .hero a{
   display:inline-block;
-  padding:14px 35px;
+  padding:14px 38px;
   background:#fff;
-  color:#6c63ff;
-  border-radius:30px;
+  color:var(--primary);
+  border-radius:40px;
   text-decoration:none;
   font-weight:600;
   transition:.3s;
 }
 
 .hero a:hover{
-  transform:scale(1.05);
+  transform:translateY(-4px) scale(1.05);
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
 }
 
-/* SECTIONS */
+/* ================= SECTIONS ================= */
 section{
-  padding:70px 20px;
+  padding:80px 20px;
 }
 
 .container{
@@ -70,19 +89,19 @@ section{
 
 .section-title{
   text-align:center;
-  margin-bottom:50px;
+  margin-bottom:60px;
 }
 
 .section-title h2{
-  font-size:2.2rem;
-  margin-bottom:10px;
+  font-size:2.3rem;
 }
 
 .section-title p{
   color:#666;
+  margin-top:10px;
 }
 
-/* SERVICES */
+/* ================= SERVICES ================= */
 .services{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -91,36 +110,50 @@ section{
 
 .service{
   background:#fff;
-  padding:30px;
-  border-radius:15px;
+  padding:35px 25px;
+  border-radius:18px;
   text-align:center;
-  transition:.3s;
+  opacity:0;
+  transform:translateY(40px);
+  transition:.6s;
+}
+
+.service.active{
+  opacity:1;
+  transform:translateY(0);
 }
 
 .service:hover{
-  transform:translateY(-8px);
-  box-shadow:0 15px 30px rgba(0,0,0,.1);
+  transform:translateY(-10px);
+  box-shadow:0 20px 40px rgba(0,0,0,.12);
 }
 
 .service h3{
-  margin-bottom:10px;
+  margin-bottom:12px;
 }
 
-/* WHY ME */
+/* ================= WHY ================= */
 .why{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
   gap:30px;
-  align-items:center;
 }
 
-.why div{
+.why-box{
   background:#fff;
   padding:30px;
-  border-radius:15px;
+  border-radius:18px;
+  opacity:0;
+  transform:scale(.9);
+  transition:.6s;
 }
 
-/* PRICING */
+.why-box.active{
+  opacity:1;
+  transform:scale(1);
+}
+
+/* ================= PRICING ================= */
 .pricing{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -129,22 +162,27 @@ section{
 
 .plan{
   background:#fff;
-  padding:30px;
-  border-radius:15px;
+  padding:35px 25px;
+  border-radius:18px;
   text-align:center;
   border:2px solid transparent;
+  opacity:0;
+  transform:translateY(40px);
+  transition:.6s;
+}
+
+.plan.active{
+  opacity:1;
+  transform:translateY(0);
 }
 
 .plan.highlight{
-  border-color:#6c63ff;
-}
-
-.plan h3{
-  margin-bottom:10px;
+  border-color:var(--primary);
+  transform:scale(1.05);
 }
 
 .plan h1{
-  color:#6c63ff;
+  color:var(--primary);
   margin:15px 0;
 }
 
@@ -160,41 +198,63 @@ section{
 .plan a{
   display:inline-block;
   margin-top:15px;
-  padding:12px 25px;
-  background:#6c63ff;
+  padding:12px 28px;
+  background:var(--primary);
   color:#fff;
-  border-radius:25px;
+  border-radius:30px;
   text-decoration:none;
+  transition:.3s;
 }
 
-/* CTA */
+.plan a:hover{
+  background:#554ef5;
+}
+
+/* ================= CTA ================= */
 .cta{
-  background:#6c63ff;
+  background:var(--primary);
   color:#fff;
   text-align:center;
-  padding:60px 20px;
+  padding:70px 20px;
 }
 
 .cta a{
   display:inline-block;
-  margin-top:20px;
-  padding:14px 35px;
+  margin-top:25px;
+  padding:14px 40px;
   background:#fff;
-  color:#6c63ff;
-  border-radius:30px;
-  text-decoration:none;
+  color:var(--primary);
+  border-radius:40px;
   font-weight:600;
+  text-decoration:none;
+  transition:.3s;
 }
 
-/* FOOTER */
+.cta a:hover{
+  transform:scale(1.08);
+}
+
+/* ================= FOOTER ================= */
 footer{
-  text-align:center;
-  padding:20px;
   background:#111;
   color:#aaa;
+  text-align:center;
+  padding:20px;
 }
 
-/* MOBILE */
+/* ================= ANIMATIONS ================= */
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* ================= MOBILE ================= */
 @media(max-width:600px){
   .hero h1{
     font-size:2.2rem;
@@ -207,9 +267,9 @@ footer{
 
 <!-- HERO -->
 <div class="hero">
-  <div>
-    <h1>Your Reliable Virtual Assistant</h1>
-    <p>Delegate your tasks, save time, and focus on growing your business. I handle the work while you scale faster.</p>
+  <div class="hero-content">
+    <h1>Your Virtual Assistant for Growth</h1>
+    <p>Stop wasting time on repetitive tasks. Let a professional Virtual Assistant handle the work while you focus on scaling.</p>
     <a href="#contact">Hire Me Now</a>
   </div>
 </div>
@@ -219,26 +279,14 @@ footer{
   <div class="container">
     <div class="section-title">
       <h2>My Services</h2>
-      <p>Professional support for your daily business needs</p>
+      <p>Reliable support designed to help your business grow</p>
     </div>
 
-    <div class="services">
-      <div class="service">
-        <h3>Admin Support</h3>
-        <p>Email management, data entry, scheduling, and organization.</p>
-      </div>
-      <div class="service">
-        <h3>Social Media</h3>
-        <p>Content posting, inbox replies, and page management.</p>
-      </div>
-      <div class="service">
-        <h3>Web Tasks</h3>
-        <p>Website updates, uploads, basic edits, and maintenance.</p>
-      </div>
-      <div class="service">
-        <h3>Customer Support</h3>
-        <p>Chat, email, and order processing support.</p>
-      </div>
+    <div class="services reveal">
+      <div class="service"> <h3>Admin Support</h3><p>Email, scheduling, data entry & organization</p></div>
+      <div class="service"> <h3>Social Media</h3><p>Posting, replies & page management</p></div>
+      <div class="service"> <h3>Website Tasks</h3><p>Uploads, edits & maintenance</p></div>
+      <div class="service"> <h3>Customer Support</h3><p>Chat, email & order processing</p></div>
     </div>
   </div>
 </section>
@@ -247,22 +295,13 @@ footer{
 <section>
   <div class="container">
     <div class="section-title">
-      <h2>Why Hire Me?</h2>
+      <h2>Why Choose Me</h2>
     </div>
 
-    <div class="why">
-      <div>
-        <h3>✔ Affordable & Reliable</h3>
-        <p>High-quality service without hiring full-time staff.</p>
-      </div>
-      <div>
-        <h3>✔ Time-Saving</h3>
-        <p>Focus on growth while I manage your daily operations.</p>
-      </div>
-      <div>
-        <h3>✔ Flexible Support</h3>
-        <p>Hourly, part-time, or full-time assistance available.</p>
-      </div>
+    <div class="why reveal">
+      <div class="why-box">✔ Affordable & Efficient</div>
+      <div class="why-box">✔ Time-Saving Solutions</div>
+      <div class="why-box">✔ Flexible Work Setup</div>
     </div>
   </div>
 </section>
@@ -271,40 +310,28 @@ footer{
 <section>
   <div class="container">
     <div class="section-title">
-      <h2>Simple Pricing</h2>
+      <h2>Pricing</h2>
     </div>
 
-    <div class="pricing">
+    <div class="pricing reveal">
       <div class="plan">
         <h3>Starter</h3>
         <h1>$5/hr</h1>
-        <ul>
-          <li>Admin Tasks</li>
-          <li>Email Support</li>
-          <li>Basic Assistance</li>
-        </ul>
+        <p>Basic admin tasks</p>
         <a href="#contact">Get Started</a>
       </div>
 
       <div class="plan highlight">
         <h3>Professional</h3>
         <h1>$8/hr</h1>
-        <ul>
-          <li>All Starter Features</li>
-          <li>Social Media</li>
-          <li>Website Tasks</li>
-        </ul>
+        <p>Admin + social media</p>
         <a href="#contact">Hire Now</a>
       </div>
 
       <div class="plan">
         <h3>Business</h3>
         <h1>$12/hr</h1>
-        <ul>
-          <li>Full Support</li>
-          <li>Priority Tasks</li>
-          <li>Customer Support</li>
-        </ul>
+        <p>Full VA support</p>
         <a href="#contact">Contact Me</a>
       </div>
     </div>
@@ -313,14 +340,29 @@ footer{
 
 <!-- CTA -->
 <div class="cta" id="contact">
-  <h2>Ready to Grow Your Business?</h2>
-  <p>Message me today and let’s get started!</p>
+  <h2>Ready to Delegate Your Tasks?</h2>
+  <p>Message me today and let’s work together.</p>
   <a href="https://m.me/yourpage">Message Me</a>
 </div>
 
 <footer>
-  © 2025 Virtual Assistant. All Rights Reserved.
+  © 2025 Virtual Assistant | All Rights Reserved
 </footer>
+
+<!-- JS FOR SCROLL ANIMATIONS -->
+<script>
+const revealElements = document.querySelectorAll('.reveal > *');
+
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('active');
+    }
+  });
+},{threshold:0.2});
+
+revealElements.forEach(el=>observer.observe(el));
+</script>
 
 </body>
 </html>
