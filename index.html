@@ -3,365 +3,219 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Virtual Assistant | Smart Business Support</title>
 
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<title>Website Template Pack – PRO</title>
+
+<meta name="description" content="Professional website template pack with animations, dark mode, contact form, and responsive design.">
+<meta name="keywords" content="website template, landing page template, html css template">
+<meta name="author" content="Snooky">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 <style>
 :root{
-  --primary:#6c63ff;
-  --secondary:#48c6ef;
-  --dark:#222;
-  --light:#f5f7fb;
+--bg:#f5f7fa;
+--text:#222;
+--card:#fff;
+--primary:#2575fc;
+}
+body.dark{
+--bg:#0f172a;
+--text:#e5e7eb;
+--card:#1e293b;
+--primary:#38bdf8;
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins',sans-serif;
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:var(--bg);color:var(--text);scroll-behavior:smooth}
+
+/* ===== TOGGLE ===== */
+.toggle{
+position:fixed;
+top:20px;
+right:20px;
+background:var(--card);
+padding:10px 15px;
+border-radius:30px;
+cursor:pointer;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+z-index:1000;
+font-size:14px;
 }
 
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  background:var(--light);
-  color:var(--dark);
-}
-
-/* ================= HERO ================= */
+/* ===== HERO ===== */
 .hero{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:40px 20px;
-  background:linear-gradient(135deg,var(--primary),var(--secondary));
-  color:#fff;
-  overflow:hidden;
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:#fff;
+background:linear-gradient(-45deg,#6a11cb,#2575fc,#00c6ff,#6a11cb);
+background-size:400% 400%;
+animation:gradient 12s ease infinite;
+padding:20px;
+}
+@keyframes gradient{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
 }
 
-.hero-content{
-  animation:fadeUp 1.2s ease forwards;
+.hero h1{font-size:2.7rem}
+.hero p{max-width:700px;margin:15px auto 30px}
+
+/* ===== BUTTON ===== */
+.btn{
+display:inline-block;
+padding:14px 30px;
+border-radius:30px;
+background:#fff;
+color:#2575fc;
+text-decoration:none;
+font-weight:500;
+transition:.3s
+}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 20px rgba(0,0,0,.2)}
+
+section{padding:80px 20px}
+.section-title{text-align:center;margin-bottom:50px}
+
+/* ===== CARDS ===== */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+max-width:1100px;
+margin:auto
+}
+.card{
+background:var(--card);
+padding:25px;
+border-radius:15px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+transition:.3s
+}
+.card:hover{transform:translateY(-8px)}
+
+/* ===== CONTACT ===== */
+form{
+max-width:500px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:15px
+}
+input,textarea{
+padding:14px;
+border-radius:10px;
+border:none;
+background:var(--card);
+color:var(--text)
+}
+button{
+padding:14px;
+border:none;
+border-radius:30px;
+background:var(--primary);
+color:#fff;
+font-size:16px;
+cursor:pointer
 }
 
-.hero h1{
-  font-size:3rem;
-  margin-bottom:15px;
-}
-
-.hero p{
-  max-width:650px;
-  margin:auto;
-  font-size:1.15rem;
-  margin-bottom:30px;
-}
-
-.hero a{
-  display:inline-block;
-  padding:14px 38px;
-  background:#fff;
-  color:var(--primary);
-  border-radius:40px;
-  text-decoration:none;
-  font-weight:600;
-  transition:.3s;
-}
-
-.hero a:hover{
-  transform:translateY(-4px) scale(1.05);
-  box-shadow:0 10px 30px rgba(0,0,0,.25);
-}
-
-/* ================= SECTIONS ================= */
-section{
-  padding:80px 20px;
-}
-
-.container{
-  max-width:1100px;
-  margin:auto;
-}
-
-.section-title{
-  text-align:center;
-  margin-bottom:60px;
-}
-
-.section-title h2{
-  font-size:2.3rem;
-}
-
-.section-title p{
-  color:#666;
-  margin-top:10px;
-}
-
-/* ================= SERVICES ================= */
-.services{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:25px;
-}
-
-.service{
-  background:#fff;
-  padding:35px 25px;
-  border-radius:18px;
-  text-align:center;
-  opacity:0;
-  transform:translateY(40px);
-  transition:.6s;
-}
-
-.service.active{
-  opacity:1;
-  transform:translateY(0);
-}
-
-.service:hover{
-  transform:translateY(-10px);
-  box-shadow:0 20px 40px rgba(0,0,0,.12);
-}
-
-.service h3{
-  margin-bottom:12px;
-}
-
-/* ================= WHY ================= */
-.why{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:30px;
-}
-
-.why-box{
-  background:#fff;
-  padding:30px;
-  border-radius:18px;
-  opacity:0;
-  transform:scale(.9);
-  transition:.6s;
-}
-
-.why-box.active{
-  opacity:1;
-  transform:scale(1);
-}
-
-/* ================= PRICING ================= */
-.pricing{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:25px;
-}
-
-.plan{
-  background:#fff;
-  padding:35px 25px;
-  border-radius:18px;
-  text-align:center;
-  border:2px solid transparent;
-  opacity:0;
-  transform:translateY(40px);
-  transition:.6s;
-}
-
-.plan.active{
-  opacity:1;
-  transform:translateY(0);
-}
-
-.plan.highlight{
-  border-color:var(--primary);
-  transform:scale(1.05);
-}
-
-.plan h1{
-  color:var(--primary);
-  margin:15px 0;
-}
-
-.plan ul{
-  list-style:none;
-  margin:20px 0;
-}
-
-.plan ul li{
-  margin-bottom:8px;
-}
-
-.plan a{
-  display:inline-block;
-  margin-top:15px;
-  padding:12px 28px;
-  background:var(--primary);
-  color:#fff;
-  border-radius:30px;
-  text-decoration:none;
-  transition:.3s;
-}
-
-.plan a:hover{
-  background:#554ef5;
-}
-
-/* ================= CTA ================= */
-.cta{
-  background:var(--primary);
-  color:#fff;
-  text-align:center;
-  padding:70px 20px;
-}
-
-.cta a{
-  display:inline-block;
-  margin-top:25px;
-  padding:14px 40px;
-  background:#fff;
-  color:var(--primary);
-  border-radius:40px;
-  font-weight:600;
-  text-decoration:none;
-  transition:.3s;
-}
-
-.cta a:hover{
-  transform:scale(1.08);
-}
-
-/* ================= FOOTER ================= */
 footer{
-  background:#111;
-  color:#aaa;
-  text-align:center;
-  padding:20px;
-}
-
-/* ================= ANIMATIONS ================= */
-@keyframes fadeUp{
-  from{
-    opacity:0;
-    transform:translateY(40px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-/* ================= MOBILE ================= */
-@media(max-width:600px){
-  .hero h1{
-    font-size:2.2rem;
-  }
+background:#111;
+color:#aaa;
+text-align:center;
+padding:20px
 }
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-content">
-    <h1>Your Virtual Assistant for Growth</h1>
-    <p>Stop wasting time on repetitive tasks. Let a professional Virtual Assistant handle the work while you focus on scaling.</p>
-    <a href="#contact">Hire Me Now</a>
-  </div>
+<!-- ===== DARK MODE TOGGLE ===== -->
+<div class="toggle" onclick="toggleMode()">🌙 Toggle Mode</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+<div data-aos="fade-up">
+<h1>Website Template Pack – PRO</h1>
+<p>Sell-ready HTML template with animations, dark mode, and contact form.</p>
+<a href="#contact" class="btn">Contact Demo</a>
+</div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section>
+<div class="section-title" data-aos="fade-up">
+<h2>Template Features</h2>
 </div>
 
-<!-- SERVICES -->
-<section>
-  <div class="container">
-    <div class="section-title">
-      <h2>My Services</h2>
-      <p>Reliable support designed to help your business grow</p>
-    </div>
-
-    <div class="services reveal">
-      <div class="service"> <h3>Admin Support</h3><p>Email, scheduling, data entry & organization</p></div>
-      <div class="service"> <h3>Social Media</h3><p>Posting, replies & page management</p></div>
-      <div class="service"> <h3>Website Tasks</h3><p>Uploads, edits & maintenance</p></div>
-      <div class="service"> <h3>Customer Support</h3><p>Chat, email & order processing</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- WHY -->
-<section>
-  <div class="container">
-    <div class="section-title">
-      <h2>Why Choose Me</h2>
-    </div>
-
-    <div class="why reveal">
-      <div class="why-box">✔ Affordable & Efficient</div>
-      <div class="why-box">✔ Time-Saving Solutions</div>
-      <div class="why-box">✔ Flexible Work Setup</div>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section>
-  <div class="container">
-    <div class="section-title">
-      <h2>Pricing</h2>
-    </div>
-
-    <div class="pricing reveal">
-      <div class="plan">
-        <h3>Starter</h3>
-        <h1>$5/hr</h1>
-        <p>Basic admin tasks</p>
-        <a href="#contact">Get Started</a>
-      </div>
-
-      <div class="plan highlight">
-        <h3>Professional</h3>
-        <h1>$8/hr</h1>
-        <p>Admin + social media</p>
-        <a href="#contact">Hire Now</a>
-      </div>
-
-      <div class="plan">
-        <h3>Business</h3>
-        <h1>$12/hr</h1>
-        <p>Full VA support</p>
-        <a href="#contact">Contact Me</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<div class="cta" id="contact">
-  <h2>Ready to Delegate Your Tasks?</h2>
-  <p>Message me today and let’s work together.</p>
-  <a href="https://m.me/yourpage">Message Me</a>
+<div class="grid">
+<div class="card" data-aos="zoom-in">
+<h3>Responsive Design</h3>
+<p>Works on mobile, tablet, and desktop.</p>
 </div>
+<div class="card" data-aos="zoom-in" data-aos-delay="150">
+<h3>Dark / Light Mode</h3>
+<p>User preference saved automatically.</p>
+</div>
+<div class="card" data-aos="zoom-in" data-aos-delay="300">
+<h3>Contact Form</h3>
+<p>EmailJS integration – no backend needed.</p>
+</div>
+</div>
+</section>
+
+<!-- ===== CONTACT FORM ===== -->
+<section id="contact">
+<div class="section-title" data-aos="fade-up">
+<h2>Contact Form Demo</h2>
+</div>
+
+<form id="contact-form" data-aos="fade-up">
+<input type="text" name="user_name" placeholder="Your Name" required>
+<input type="email" name="user_email" placeholder="Your Email" required>
+<textarea name="message" rows="5" placeholder="Your Message"></textarea>
+<button type="submit">Send Message</button>
+</form>
+</section>
 
 <footer>
-  © 2025 Virtual Assistant | All Rights Reserved
+<p>© 2026 Website Template Pack – PRO</p>
 </footer>
 
-<!-- JS FOR SCROLL ANIMATIONS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
 <script>
-const revealElements = document.querySelectorAll('.reveal > *');
+AOS.init({duration:1000,once:true});
 
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add('active');
-    }
-  });
-},{threshold:0.2});
+/* ===== DARK MODE ===== */
+function toggleMode(){
+document.body.classList.toggle('dark');
+localStorage.setItem('mode',
+document.body.classList.contains('dark') ? 'dark':'light');
+}
+if(localStorage.getItem('mode')==='dark'){
+document.body.classList.add('dark');
+}
 
-revealElements.forEach(el=>observer.observe(el));
+/* ===== EMAILJS ===== */
+(function(){
+emailjs.init("YOUR_PUBLIC_KEY"); // replace
+})();
+document.getElementById('contact-form').addEventListener('submit',function(e){
+e.preventDefault();
+emailjs.sendForm(
+"YOUR_SERVICE_ID",
+"YOUR_TEMPLATE_ID",
+this
+).then(()=>alert("Message Sent!"));
+this.reset();
+});
 </script>
 
 </body>
