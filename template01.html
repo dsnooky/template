@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Landing Page</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<style>
+:root{--bg:#f5f7fa;--text:#222;--card:#fff;--primary:#2575fc}body.dark{--bg:#0f172a;--text:#e5e7eb;--card:#1e293b;--primary:#38bdf8}*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}body{background:var(--bg);color:var(--text);scroll-behavior:smooth}.toggle{position:fixed;top:20px;right:20px;background:var(--card);padding:10px 15px;border-radius:30px;cursor:pointer;box-shadow:0 5px 15px rgba(0,0,0,.15);z-index:1000;font-size:14px}.hero{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;background:linear-gradient(-45deg,#6a11cb,#2575fc,#00c6ff,#6a11cb);background-size:400% 400%;animation:gradient 12s ease infinite;padding:20px}@keyframes gradient{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}.hero h1{font-size:2.7rem}.hero p{max-width:700px;margin:15px auto 30px}.btn{display:inline-block;padding:14px 30px;border-radius:30px;background:#fff;color:#2575fc;text-decoration:none;font-weight:500;transition:.3s}.btn:hover{transform:translateY(-3px);box-shadow:0 10px 20px rgba(0,0,0,.2)}section{padding:80px 20px}.section-title{text-align:center;margin-bottom:50px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px;max-width:1100px;margin:auto}.card{background:var(--card);padding:25px;border-radius:15px;box-shadow:0 8px 20px rgba(0,0,0,.08);transition:.3s}.card:hover{transform:translateY(-8px)}form{max-width:500px;margin:auto;display:flex;flex-direction:column;gap:15px}input,textarea{padding:14px;border-radius:10px;border:none;background:var(--card);color:var(--text)}button{padding:14px;border:none;border-radius:30px;background:var(--primary);color:#fff;font-size:16px;cursor:pointer}footer{background:#111;color:#aaa;text-align:center;padding:20px}@media(max-width:768px){.hero h1{font-size:2.2rem}.hero p{font-size:1rem}}
+</style>
+</head>
+<body>
+<div class="toggle" onclick="toggleMode()">🌙 Toggle Mode</div>
+
+<section class="hero">
+<div data-aos="fade-up">
+<h1>Business Landing Page</h1>
+<p>Professional site for businesses & freelancers.</p>
+<a href="#contact" class="btn">Contact Me</a>
+</div>
+</section>
+
+<section id="portfolio">
+<div class="section-title" data-aos="fade-up"><h2>Our Services & Portfolio</h2></div>
+<div class="grid">
+<div class="card" data-aos="zoom-in"><h3>Service 1</h3><p>Consulting & Strategy</p></div>
+<div class="card" data-aos="zoom-in" data-aos-delay="150"><h3>Service 2</h3><p>Web Design & Development</p></div>
+<div class="card" data-aos="zoom-in" data-aos-delay="300"><h3>Service 3</h3><p>Marketing Solutions</p></div>
+</div>
+</section>
+
+<section id="pricing">
+<div class="section-title" data-aos="fade-up"><h2>Pricing Plans</h2></div>
+<div class="grid">
+<div class="card" data-aos="fade-up"><h3>Basic</h3><p>₱1,999</p><p>Single page • Mobile-friendly • Basic SEO</p></div>
+<div class="card" data-aos="fade-up" data-aos-delay="150"><h3>Standard</h3><p>₱4,999</p><p>Multi-page • Animations • SEO Optimized</p></div>
+<div class="card" data-aos="fade-up" data-aos-delay="300"><h3>Premium</h3><p>₱9,999</p><p>Custom Design • Full Support • Fast Loading</p></div>
+</div>
+</section>
+
+<section id="contact">
+<div class="section-title" data-aos="fade-up"><h2>Contact Form</h2></div>
+<form id="contact-form" data-aos="fade-up">
+<input type="text" name="user_name" placeholder="Your Name" required>
+<input type="email" name="user_email" placeholder="Your Email" required>
+<textarea name="message" rows="5" placeholder="Your Message"></textarea>
+<button type="submit">Send Message</button>
+</form>
+</section>
+
+<footer><p>© 2026 Business Landing Template</p></footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+AOS.init({duration:1000,once:true});
+function toggleMode(){document.body.classList.toggle('dark');localStorage.setItem('mode',document.body.classList.contains('dark')?'dark':'light')}
+if(localStorage.getItem('mode')==='dark'){document.body.classList.add('dark')}
+(function(){emailjs.init("YOUR_PUBLIC_KEY");})();
+document.getElementById('contact-form').addEventListener('submit',function(e){e.preventDefault();emailjs.sendForm("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",this).then(()=>alert("Message Sent!"));this.reset();});
+</script>
+</body>
+</html>
